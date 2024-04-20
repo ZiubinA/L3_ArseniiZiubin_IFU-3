@@ -114,9 +114,9 @@ namespace L3_ArseniiZiubin_IFU_3
 
         private void task2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PostCard resultContainer = SelectedPostCard.
-            Display("All post cards with more than 1 copy", FindAllPostCards);
-            SetStatus("Electronic devices with longest battery life are found.");
+            //PostCard resultContainer = SelectedPostCard.
+            //Display("All post cards with more than 1 copy", FindAllPostCards);
+            //SetStatus("Electronic devices with longest battery life are found.");
         }
     }
 }

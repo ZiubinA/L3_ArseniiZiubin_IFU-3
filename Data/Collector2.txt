@@ -1,0 +1,6 @@
+﻿Collector2
+SName1; SCountry1; 2022; colored; 30; 15; 5
+SName2; SCountry4; 2015; black; 22; 11; 1
+SName3; SCountry3; 2024; colored; 32; 32; 2
+SName4; NO; 0; black; 34; 14; 5
+SName5; SCountry2; 0; white; 67; 50; 3

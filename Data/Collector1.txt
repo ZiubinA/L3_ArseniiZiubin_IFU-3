@@ -1,0 +1,6 @@
+﻿Collector1
+Name1; Country1; 2020; colored; 40; 20; 5
+Name2; Country2; 2019; black; 22; 11; 4
+Name3; Country3; 2014; white; 32; 32; 2
+Name4; NO; 0; black; 23; 14; 5
+Name5; Country4; 0; white; 50; 50; 7

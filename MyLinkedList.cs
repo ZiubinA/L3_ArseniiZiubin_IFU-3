@@ -169,6 +169,54 @@ namespace L3_ArseniiZiubin_IFU_3
             return NumOfCol;
         }
 
+        /// <summary>
+        /// Task 2 : Create a container from all companies of employees 
+        /// who worked in 1-st shift i.e. from 8 a.m. till 5 p.m.
+        /// </summary>
+        /// <returns>Employees that worked on the first shift</returns>
+        public MyLinkedList MoreThanOneCopy()
+        {
+            MyNode current = head;
+            MyLinkedList FS = new MyLinkedList();
+            
+            while (current != null)
+            {
+                PostCard EM = current.Data;
+                if (EM.Quantity > 1)
+                {
+                    FS.AddToEnd(EM);
+                }
+                current = current.Next;
+            }
+            return FS;
+        }
+
+        /// <summary>
+        /// Joins two linked lists by appending the nodes of the second list
+        /// to the end of the first list.
+        /// </summary>
+        /// <param name="otherList">The linked list to append to the end of the current list.</param>
+        public void Join(MyLinkedList otherList)
+        {
+            if (head == null)
+            {
+                // If the current list is empty, set its head to the head of the other list
+                head = otherList.head;
+            }
+            else
+            {
+                // Find the last node of the current list
+                MyNode current = head;
+                while (current.Next != null)
+                {
+                    current = current.Next;
+                }
+
+                // Append the other list to the current list
+                current.Next = otherList.head;
+            }
+        }
+
         /// <summary> 
         /// Sort data of linked list 
         /// Algorithm: selection sort 

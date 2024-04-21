@@ -18,27 +18,12 @@ namespace L3_ArseniiZiubin_IFU_3
         private Dictionary<string, MyLinkedList> Data;
 
         // Associative container for Task1 
-        private Dictionary<string, MyLinkedList> AllLongestBatteryLife;
-
-        private Dictionary<string, MyLinkedList> FindAllPostCards;
+        private Dictionary<string, string> AllLongestBatteryLife;
 
         // Filtered electronic devices (required for Task2) 
-        private MyLinkedList SelectedPostCard;
+        private MyLinkedList Result;
 
 
-        /// <summary> 
-        /// Makes a copy for linked list 
-        /// </summary> 
-        /// <param name="Source">Specified linked list to copy from</param> 
-        public void Copy(ref MyLinkedList Source)
-        {
-            SelectedPostCard = new MyLinkedList();
-            for (Source.Start(); Source.Exists(); Source.Next())
-            {
-                PostCard ed = Source.GetData();
-                SelectedPostCard.AddToEnd(ed);
-            }
-        }
 
         public IEnumerator DataEnumerator() { return Data.GetEnumerator(); }
 
@@ -55,6 +40,8 @@ namespace L3_ArseniiZiubin_IFU_3
             InitializeComponent();
             ToggleControls();
             SetStatus("Open folder to read data");
+
+            Result = new MyLinkedList();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -99,24 +86,21 @@ namespace L3_ArseniiZiubin_IFU_3
             Close();
         }
 
-        private Form GetOwner()
-        {
-            return Owner;
-        }
 
         private void task1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AllLongestBatteryLife = TaskUtils.FindCollectorForSpecCountry(Data, textBox1.Text);
-            ResultBox.Items.Add(GetOwner());
-            //Display("Electronic devices with longest battery life", AllLongestBatteryLife);
+
+            DisplayContainer(AllLongestBatteryLife);
             SetStatus("Electronic devices with longest battery life are found.");
         }
 
         private void task2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //PostCard resultContainer = SelectedPostCard.
-            //Display("All post cards with more than 1 copy", FindAllPostCards);
-            //SetStatus("Electronic devices with longest battery life are found.");
+            Result = TaskUtils.MoreThanOneCopyP(Data);
+
+            Display("All post cards with more than 1 copy", Result);
+            SetStatus("Electronic devices with longest battery life are found.");
         }
     }
 }

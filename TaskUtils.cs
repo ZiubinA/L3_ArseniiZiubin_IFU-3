@@ -13,16 +13,14 @@ namespace L3_ArseniiZiubin_IFU_3
         /// </summary> 
         /// <param name="Data">Associative container (dictionary) of electronic devices</param> 
         /// <returns>Dictionary (owner, MyLinkedList) of electronic devices </returns> 
-        public static Dictionary<string, MyLinkedList> FindCollectorForSpecCountry
-                     (Dictionary<string, MyLinkedList> Data, string country)
+        public static Dictionary<string, string> FindCollectorForSpecCountry (Dictionary<string, MyLinkedList> Data, string country)
         {
-            Dictionary<string, MyLinkedList> AllLongest = new Dictionary<string, MyLinkedList>();
+            Dictionary<string, string> AllLongest = new Dictionary<string, string>();
 
             foreach (KeyValuePair<string, MyLinkedList> pair in Data)
             {
                 string owner = pair.Key;
                 PostCard SpecQuant = pair.Value.CountColPost();
-                MyLinkedList ED = new MyLinkedList();
                 // Copy electronic devices with longest battery life 
                 for (pair.Value.Start(); pair.Value.Exists(); pair.Value.Next())
                 {
@@ -30,44 +28,42 @@ namespace L3_ArseniiZiubin_IFU_3
                     // Find all devices with maximum battery life 
                     if (ed.edCountry == country && SpecQuant.Quantity == ed.Quantity)
                     {
-                        ED.AddToEnd(ed);
+                        AllLongest.Add(owner, null);
 
                     }
-                }
-                if (!AllLongest.ContainsKey(owner) && ED.Count != 0)
-                {
-                    AllLongest.Add(owner, ED);
                 }
             }
             return AllLongest;
         }
 
-        public static Dictionary<string, MyLinkedList> FindAllPostCards
-             (Dictionary<string, MyLinkedList> Data)
+        // Task 2 : create first shift container 
+        /// <summary>
+        /// Task 2 : Finds all employees in the first shift (before 10 am) across all companies
+        /// and combines them into a single linked list.
+        /// </summary>
+        /// <param name="Data">Source data of companies and employee lists.</param>
+        /// <returns>Linked list containing first shift employees.</returns>
+        public static MyLinkedList MoreThanOneCopyP(Dictionary<string, MyLinkedList> Data)
         {
-            Dictionary<string, MyLinkedList> AllLongest = new Dictionary<string, MyLinkedList>();
+            // Creates a dictionary to store first shift employee lists grouped by company
+            Dictionary<string, MyLinkedList> moreThan1Copy = new Dictionary<string, MyLinkedList>();
 
             foreach (KeyValuePair<string, MyLinkedList> pair in Data)
             {
-                string owner = pair.Key;
-                MyLinkedList ED = new MyLinkedList();
-                // Copy electronic devices with longest battery life 
-                for (pair.Value.Start(); pair.Value.Exists(); pair.Value.Next())
-                {
-                    PostCard ed = pair.Value.GetData();
-                    // Find all devices with maximum battery life 
-                    if (ed.Quantity > 1)
-                    {
-                        if (!ED.Contains(ed))
-                            ED.AddToEnd(ed);
-                    }
-                }
-                if (!AllLongest.ContainsKey(owner))
-                {
-                    AllLongest.Add(owner, ED);
-                }
+                // Gets the employee list for the current company
+                MyLinkedList postCardList = pair.Value;
+                MyLinkedList moreThaOneCopy = postCardList.MoreThanOneCopy();
+                moreThan1Copy.Add(pair.Key, moreThaOneCopy);
+
             }
-            return AllLongest;
+            MyLinkedList C = new MyLinkedList();
+            // Joins each first shift list into the target list
+            foreach (KeyValuePair<string, MyLinkedList> pair in moreThan1Copy)
+            {
+                MyLinkedList employeesList = pair.Value;
+                C.Join(employeesList);
+            }
+            return C;
         }
 
         /// <summary> 

@@ -70,5 +70,40 @@ namespace L3_ArseniiZiubin_IFU_3
             }
             ResultBox.Items.Add("\n");
         }
+
+        /// <summary>
+        /// Writes contents (company name and average working time for employees) to ListBox
+        /// </summary>
+        /// <param name="averages">Average working time for employees of each company</param>
+        public void DisplayContainer(Dictionary<string, string> data)
+        {
+            foreach (var kvp in data)
+            {
+                string owner = kvp.Key;
+                ResultBox.Items.Add($"Collector name who has more colored post cards for specified country {owner}");
+            }
+        }
+
+        /// <summary>
+        /// Writes contents about post cards to ListBox
+        /// </summary>
+        /// <param name="header">Note (label) above table</param>
+        /// <param name="E">Linked list of employees</param>
+        public void Display(string header, MyLinkedList E)
+        {
+            ResultBox.Items.Add(header);
+            string tableHeader = string.Format
+                   ("|{0, -20} | {1, -20} | {2, 15} | {3, -20} | {4, 15} | {5, 15} | {6, -20} |",
+                   "Name", "Country", "Year", "Type", "Height", "Width", "Quantity");
+            ResultBox.Items.Add(tableHeader);
+            ResultBox.Items.Add(new string('-', 75));
+            for (E.Start(); E.Exists(); E.Next())
+            {
+                PostCard em = E.GetData();
+                ResultBox.Items.Add(em.ToString());
+            }
+            ResultBox.Items.Add(new string('-', 75));
+            ResultBox.Items.Add("\n");
+        }
     }
 }

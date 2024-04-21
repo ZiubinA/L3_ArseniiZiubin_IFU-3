@@ -245,19 +245,19 @@ namespace L3_ArseniiZiubin_IFU_3
         {
             for (MyNode s1 = head; s1 != null; s1 = s1.Next)
             {
-                if (s1.Data.year == '0')
+                if (s1.Data.year == 0)
                 {
                     // Store head node  
                     MyNode temp = head, previous = null;
                     // If head node itself holds the value to be deleted  
-                    if (temp != null && temp.Data.year == '0')
+                    if (temp != null && temp.Data.year == 0)
                     {
                         head = temp.Next; // Changed head  
                         return;
                     }
                     // Search for the value to be deleted, keep track of the  
                     // previous node as we need to change temp.next  
-                    while (temp != null && temp.Data.year != '0')
+                    while (temp != null && temp.Data.year != 0)
                     {
                         previous = temp;
                         temp = temp.Next;

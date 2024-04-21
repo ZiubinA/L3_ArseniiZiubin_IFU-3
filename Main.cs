@@ -23,7 +23,14 @@ namespace L3_ArseniiZiubin_IFU_3
         // Filtered electronic devices (required for Task2) 
         private MyLinkedList Result;
 
+        public Main()
+        {
+            InitializeComponent();
+            ToggleControls();
+            SetStatus("Open folder to read data");
 
+            Result = new MyLinkedList();
+        }
 
         public IEnumerator DataEnumerator() { return Data.GetEnumerator(); }
 
@@ -35,14 +42,7 @@ namespace L3_ArseniiZiubin_IFU_3
         public void UniqueModelNext() { UniqueModels.Next(); }
         public string UniqueModelData() { return UniqueModels.GetData(); }
 
-        public Main()
-        {
-            InitializeComponent();
-            ToggleControls();
-            SetStatus("Open folder to read data");
 
-            Result = new MyLinkedList();
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -108,6 +108,16 @@ namespace L3_ArseniiZiubin_IFU_3
             Result.Sort();
             Display("Sorted result container", Result);
             SetStatus("Result container sorted");
+        }
+
+        private void task4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for(int i = 0; i < Result.Count; i++)
+            {
+                Result.RemoveALL();
+            }
+            Display("Removed all data where year is unknown", Result);
+            SetStatus("Remove is done");
         }
     }
 }

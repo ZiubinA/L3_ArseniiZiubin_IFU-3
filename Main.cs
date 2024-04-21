@@ -102,5 +102,12 @@ namespace L3_ArseniiZiubin_IFU_3
             Display("All post cards with more than 1 copy", Result);
             SetStatus("Electronic devices with longest battery life are found.");
         }
+
+        private void task3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Result.Sort();
+            Display("Sorted result container", Result);
+            SetStatus("Result container sorted");
+        }
     }
 }

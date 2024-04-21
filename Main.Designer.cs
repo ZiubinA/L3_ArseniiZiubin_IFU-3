@@ -123,6 +123,7 @@
             this.task3ToolStripMenuItem.Name = "task3ToolStripMenuItem";
             this.task3ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.task3ToolStripMenuItem.Text = "Task3";
+            this.task3ToolStripMenuItem.Click += new System.EventHandler(this.task3ToolStripMenuItem_Click);
             // 
             // task4ToolStripMenuItem
             // 

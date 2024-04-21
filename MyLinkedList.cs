@@ -228,7 +228,7 @@ namespace L3_ArseniiZiubin_IFU_3
                 // Search for maxmimum value in range 
                 MyNode maxv = s1;
                 for (MyNode s2 = s1; s2 != null; s2 = s2.Next)
-                    if (s2.Data >= maxv.Data)
+                    if (s2.Data <= maxv.Data)
                         maxv = s2;
                 //Swap of values (exchanging data parts) 
                 PostCard s = s1.Data;

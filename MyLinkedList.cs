@@ -39,13 +39,13 @@ namespace L3_ArseniiZiubin_IFU_3
         }
 
         /// <summary> 
-        /// Gets data of electronic device 
+        /// Gets data of post card
         /// </summary> 
         /// <returns>Data of first element in linked list</returns>  
         public PostCard First() { return head.Data; }
 
         /// <summary> 
-        /// Gets data of electronic device 
+        /// Gets data of post card
         /// </summary> 
         /// <returns>Data of last element in linked list</returns> 
         public PostCard Last() { return tail.Data; }
@@ -70,20 +70,18 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         /// Adds new element (node) to front of linked list   
         /// </summary> 
-        /// <param name="ED">Data of single electronic device</param> 
+        /// <param name="ED">Data of single post card</param> 
         public void AddToFront(PostCard ED)
         {
             var p = new MyNode(ED, null);
             p.Next = head;
             head = p;
-            // or 
-            //head = new MyNode(student, p); 
         }
 
         /// <summary> 
         /// Adds new element (node) to end of linked list   
         /// </summary> 
-        /// <param name="ED">Data of single electronic device</param> 
+        /// <param name="ED">Data of single post card</param> 
         public void AddToEnd(PostCard ED)
         {
             var p = new MyNode(ED, null);
@@ -132,8 +130,8 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         /// Searches if an element is found in container 
         /// </summary> 
-        /// <param name="myEd">Searched device</param> 
-        /// <returns>True, if searched device is found, false otherwise</returns> 
+        /// <param name="myEd">Searched post card</param> 
+        /// <returns>True, if searched post card is found, false otherwise</returns> 
         public bool Contains(PostCard myEd)
         {
             for (MyNode p = head; p != null; p = p.Next)
@@ -148,11 +146,11 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         /// Get data of element in linked list 
         /// </summary> 
-        /// <returns>Data of electronic device (referenced by interface pointer)</returns> 
+        /// <returns>Data of post card(referenced by interface pointer)</returns> 
         public PostCard GetData() { return iP.Data; }
 
         /// <summary> 
-        /// Finds electronic device with longest battery life 
+        /// counts quantity of post card  
         /// </summary> 
         /// <returns>First electronic device (object) with longest battery life</returns> 
         public PostCard CountColPost()
@@ -170,10 +168,9 @@ namespace L3_ArseniiZiubin_IFU_3
         }
 
         /// <summary>
-        /// Task 2 : Create a container from all companies of employees 
-        /// who worked in 1-st shift i.e. from 8 a.m. till 5 p.m.
+        /// looking for post cards with more than one copy
         /// </summary>
-        /// <returns>Employees that worked on the first shift</returns>
+        /// <returns>PostCard with more than one copy</returns>
         public MyLinkedList MoreThanOneCopy()
         {
             MyNode current = head;
@@ -238,9 +235,8 @@ namespace L3_ArseniiZiubin_IFU_3
         }
 
         /// <summary> 
-        /// Removes elements from linked list with battery life shorter than ABL  
+        /// Removes elements from linked list if year is equals 0  
         /// </summary> 
-        /// <param name="ABL">Average (first and last element considered) battery life</param> 
         public void RemoveALL()
         {
             for (MyNode s1 = head; s1 != null; s1 = s1.Next)
@@ -306,18 +302,5 @@ namespace L3_ArseniiZiubin_IFU_3
                 }
             }
         }
-
-        //public void UpdateAll(int UBL)
-        //{
-        //    if (UBL < 1 || UBL > 1000)
-        //    {
-        //        throw new ArgumentException("UBL must be between 1 and 1000.");
-        //    }
-
-        //    for (MyNode node = head; node != null; node = node.Next)
-        //    {
-        //        node.Data.batteryLife += UBL;
-        //    }
-        //}
-    }   // end declaration of container class 
+    }    
 }

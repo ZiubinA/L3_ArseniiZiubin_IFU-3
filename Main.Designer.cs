@@ -57,7 +57,7 @@
             this.calculationsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -68,7 +68,7 @@
             this.saveToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
@@ -101,50 +101,52 @@
             this.task4ToolStripMenuItem,
             this.task5ToolStripMenuItem});
             this.calculationsToolStripMenuItem.Name = "calculationsToolStripMenuItem";
-            this.calculationsToolStripMenuItem.Size = new System.Drawing.Size(103, 24);
+            this.calculationsToolStripMenuItem.Size = new System.Drawing.Size(103, 26);
             this.calculationsToolStripMenuItem.Text = "Calculations";
             // 
             // task1ToolStripMenuItem
             // 
             this.task1ToolStripMenuItem.Name = "task1ToolStripMenuItem";
-            this.task1ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.task1ToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.task1ToolStripMenuItem.Text = "Task1";
             this.task1ToolStripMenuItem.Click += new System.EventHandler(this.task1ToolStripMenuItem_Click);
             // 
             // task2ToolStripMenuItem
             // 
             this.task2ToolStripMenuItem.Name = "task2ToolStripMenuItem";
-            this.task2ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.task2ToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.task2ToolStripMenuItem.Text = "Task2";
             this.task2ToolStripMenuItem.Click += new System.EventHandler(this.task2ToolStripMenuItem_Click);
             // 
             // task3ToolStripMenuItem
             // 
             this.task3ToolStripMenuItem.Name = "task3ToolStripMenuItem";
-            this.task3ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.task3ToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.task3ToolStripMenuItem.Text = "Task3";
             this.task3ToolStripMenuItem.Click += new System.EventHandler(this.task3ToolStripMenuItem_Click);
             // 
             // task4ToolStripMenuItem
             // 
             this.task4ToolStripMenuItem.Name = "task4ToolStripMenuItem";
-            this.task4ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.task4ToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.task4ToolStripMenuItem.Text = "Task4";
             this.task4ToolStripMenuItem.Click += new System.EventHandler(this.task4ToolStripMenuItem_Click);
             // 
             // task5ToolStripMenuItem
             // 
             this.task5ToolStripMenuItem.Name = "task5ToolStripMenuItem";
-            this.task5ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.task5ToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.task5ToolStripMenuItem.Text = "Task5";
+            this.task5ToolStripMenuItem.Click += new System.EventHandler(this.task5ToolStripMenuItem_Click);
             // 
             // ResultBox
             // 
+            this.ResultBox.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ResultBox.FormattingEnabled = true;
-            this.ResultBox.ItemHeight = 16;
+            this.ResultBox.ItemHeight = 15;
             this.ResultBox.Location = new System.Drawing.Point(12, 31);
             this.ResultBox.Name = "ResultBox";
-            this.ResultBox.Size = new System.Drawing.Size(762, 308);
+            this.ResultBox.Size = new System.Drawing.Size(762, 304);
             this.ResultBox.TabIndex = 1;
             // 
             // openFileDialog1

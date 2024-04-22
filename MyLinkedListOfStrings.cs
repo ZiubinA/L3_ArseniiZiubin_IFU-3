@@ -115,5 +115,6 @@ namespace L3_ArseniiZiubin_IFU_3
         }
 
         public string GetData() { return iP.Data; }
+
     }
 }

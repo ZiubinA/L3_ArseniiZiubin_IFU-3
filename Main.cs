@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace L3_ArseniiZiubin_IFU_3
 {
@@ -18,9 +12,9 @@ namespace L3_ArseniiZiubin_IFU_3
         private Dictionary<string, MyLinkedList> Data;
 
         // Associative container for Task1 
-        private Dictionary<string, string> AllLongestBatteryLife;
+        private Dictionary<string, string> SameCountry;
 
-        // Filtered electronic devices (required for Task2) 
+        // Filtered post card (required for Task5) 
         private MyLinkedList Result;
 
         public Main()
@@ -34,14 +28,26 @@ namespace L3_ArseniiZiubin_IFU_3
 
         public IEnumerator DataEnumerator() { return Data.GetEnumerator(); }
 
-        // Singly linked list of unique names of models (reuired for Task2) 
-        MyLinkedListOfStrings UniqueModels;
+        MyLinkedListOfStrings UniquePostCards;
         // Interface methods  
-        public void UniqueModelStart() { UniqueModels.Start(); }
-        public bool UniqueModelExists() { return UniqueModels.Exists(); }
-        public void UniqueModelNext() { UniqueModels.Next(); }
-        public string UniqueModelData() { return UniqueModels.GetData(); }
+        public void UniquePostCardsStart() { UniquePostCards.Start(); }
+        public bool UniquePostCardsExists() { return UniquePostCards.Exists(); }
+        public void UniquePostCardsNext() { UniquePostCards.Next(); }
+        public string UniquePostCardsData() { return UniquePostCards.GetData(); }
 
+        /// <summary>
+        /// Makes a copy for linked list
+        /// </summary>
+        /// <param name="Source">Specified linked list to copy from</param>
+        public void Copy(ref MyLinkedList Source)
+        {
+            Result = new MyLinkedList();
+            for (Source.Start(); Source.Exists(); Source.Next())
+            {
+                PostCard ed = Source.GetData();
+                Result.AddToEnd(ed);
+            }
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,18 +95,26 @@ namespace L3_ArseniiZiubin_IFU_3
 
         private void task1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AllLongestBatteryLife = TaskUtils.FindCollectorForSpecCountry(Data, textBox1.Text);
-
-            DisplayContainer(AllLongestBatteryLife);
-            SetStatus("Electronic devices with longest battery life are found.");
+            SameCountry = TaskUtils.FindCollectorForSpecCountry(Data, textBox1.Text);
+            if (SameCountry.Count != 0)
+            {
+                DisplayContainer(SameCountry);
+                SetStatus("post cards are found.");
+            }
+            else
+                MessageBox.Show("Such country does not exist. ");
         }
 
         private void task2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Result = TaskUtils.MoreThanOneCopyP(Data);
-
-            Display("All post cards with more than 1 copy", Result);
-            SetStatus("Electronic devices with longest battery life are found.");
+            if (Result.Count != 0)
+            {
+                Display("All post cards with more than 1 copy", Result);
+                SetStatus("post cards are found.");
+            }
+            else
+                MessageBox.Show("There is no post cards with more than one copy. ");
         }
 
         private void task3ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,12 +126,30 @@ namespace L3_ArseniiZiubin_IFU_3
 
         private void task4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < Result.Count; i++)
+            int j = Result.Count;
+            for(int i = 0; i < j; i++)
             {
                 Result.RemoveALL();
             }
-            Display("Removed all data where year is unknown", Result);
-            SetStatus("Remove is done");
+            if(Result.Count != 0)
+            {
+                Display("Removed all data where year is unknown", Result);
+                SetStatus("Remove is done");
+            }
+            else if(Result.Count == 0 && j != 0)
+                MessageBox.Show("all post cards were removed.. ");
+            else
+                MessageBox.Show("There is no post cards left after removing. ");
+
+        }
+
+        private void task5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UniquePostCards = TaskUtils.UniqueTypes(Data);
+
+            // Interaction mechanism to pass values between different forms
+            CreatePostCards filterForm = new CreatePostCards(this);
+            filterForm.Show();
         }
     }
 }

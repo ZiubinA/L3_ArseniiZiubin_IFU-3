@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,9 +26,13 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         /// Constructor (with default values) 
         /// </summary> 
-        /// <param name="model">New value for model of electronic device</param> 
-        /// <param name="type">New value for type of electronic device</param> 
-        /// <param name="batteryLife">New value for battery life of electronic device</param> 
+        /// <param name="name">New value for name of post cards</param> 
+        /// <param name="country">New value for country of post cards</param> 
+        /// <param name="year">New value for year of post cards</param> 
+        /// <param name="height">New value for height of post cards</param> 
+        /// <param name="width">New value for width of post cards</param> 
+        /// <param name="type">New value for type of post cards/param> 
+        /// <param name="quantity">New value for quantity of post cards</param> 
         public PostCard(string name = "", string country = "", int year = 0, string type = "", int height = 0, int width = 0, int quantity = 0)
         {
             edName = name;
@@ -42,21 +47,18 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         /// Method for creating a string output from class properties (data fields) 
         /// </summary> 
-        /// <returns>Model, Type and battery life concatenated to single string</returns> 
         public override string ToString()
         {
             string mLine;
-            mLine = string.Format("|{0, -20} | {1, -20} | {2, 15} | {3, -20} | {4, 15} | {5, 15} | {6, -20} |",
+            mLine = string.Format("|{0, 10} | {1, 10} | {2, 10} | {3, 10} | {4, 10} | {5, 10} | {6, 10} |",
                                     edName, edCountry, year, edType, height, width, Quantity);
             return mLine;
         }
 
         /// <summary> 
-        /// Equality check method for two electronic devices 
+        /// Equality check method
         /// </summary> 
-        /// <param name="myObject">Object of electronic device to be matched with </param> 
-        /// <returns>True if type, model and battery life of one electric device 
-        /// match type, model, battery life of other electric device</returns> 
+        /// <param name="myObject">Object of post cards to be matched with </param>  
         public override bool Equals(object myObject)
         {
             PostCard postCard = myObject as PostCard;
@@ -65,13 +67,14 @@ namespace L3_ArseniiZiubin_IFU_3
                    postCard.year == year &&
                    postCard.edType == edType &&
                    postCard.height == height &&
+                   postCard.width == width &&
                    postCard.Quantity == Quantity;
         }
 
         /// <summary> 
         /// Reccommended method to override: GetHashCode 
         /// </summary> 
-        /// <returns>Hash code for model and battery life (BITWISE XOR) </returns> 
+        /// <returns>Hash code (BITWISE XOR) </returns> 
         public override int GetHashCode()
         {
             return edName.GetHashCode() ^
@@ -84,13 +87,13 @@ namespace L3_ArseniiZiubin_IFU_3
         }
 
         /// <summary> 
-        /// Overloaded operator >= (by battery life and model) 
+        /// Overloaded operator >= (by year and name) 
         /// </summary> 
-        /// <param name="first">First electronic device</param> 
-        /// <param name="second">Second electronic device</param> 
-        /// <returns>True if battery life of first ir greater than 
-        /// battery life of second or if battery lifes are equal, compares 
-        /// by model name in reverse alphabetic order</returns> 
+        /// <param name="first">First post card</param> 
+        /// <param name="second">second post card</param> 
+        /// <returns>True if year of first ir greater than 
+        /// year of second or if battery lifes are equal, compares 
+        /// by name in reverse alphabetic order</returns> 
         public static bool operator >=(PostCard first, PostCard second)
         {
             int poz = String.Compare(first.edName, second.edName,
@@ -98,13 +101,11 @@ namespace L3_ArseniiZiubin_IFU_3
             return first.year > second.year ||
                    first.year == second.year && poz > 0;
         }
-        /// <summary> 
-        /// Overloaded operator <= (by battery life and model) 
-        /// </summary> 
-        /// <param name="first">First electronic device</param> 
-        /// <param name="second">Second electronic device</param> 
-        /// <returns>True if battery life of first ir less than 
-        /// battery life of second or if battery lifes are equal, compares 
+
+        /// <param name="first">First post card</param> 
+        /// <param name="second">second post card</param> 
+        /// <returns>True if year of first ir greater than 
+        /// year of second or if battery lifes are equal, compares 
         /// by model name alphabetic order</returns> 
         public static bool operator <=(PostCard first, PostCard second)
         {
@@ -117,19 +118,19 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         ///  Overloaded operator == (by model) 
         /// </summary> 
-        /// <param name="first">First electronic device</param> 
-        /// <param name="second">Second electronic device</param> 
-        /// <returns>True if type of first is  equal to type of second</returns> 
+        /// <param name="first">First post card</param> 
+        /// <param name="second">Second post card</param> 
+        /// <returns>True if name of first is equal to name of second</returns> 
         public static bool operator ==(PostCard first, PostCard second)
         {
-            return first.edType == second.edType;
+            return first.edName == second.edName;
         }
 
         /// <summary> 
         /// Overloaded operator != (by model) 
         /// </summary> 
-        /// <param name="first">First electronic device</param> 
-        /// <param name="second">Second electronic device</param> 
+        /// <param name="first">First post card</param> 
+        /// <param name="second">Second post card</param> 
         /// <returns>True if type of first is not equal to type of second</returns> 
         public static bool operator !=(PostCard first, PostCard second)
         {
@@ -139,9 +140,9 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         /// Overloaded operator >  (by battery life) 
         /// </summary> 
-        /// <param name="first">First electronic device</param> 
-        /// <param name="second">Second electronic device</param> 
-        /// <returns>True if battery life of first is greater than battery life of second</returns> 
+        /// <param name="first">First post card</param> 
+        /// <param name="second">Second post card</param> 
+        /// <returns>True if year of first is greater than year of second</returns> 
         public static bool operator >(PostCard first, PostCard second)
         {
             return first.year > second.year;
@@ -150,9 +151,9 @@ namespace L3_ArseniiZiubin_IFU_3
         /// <summary> 
         /// Overloaded operator < (by battery life) 
         /// </summary> 
-        /// <param name="first">First electronic device</param> 
-        /// <param name="second">Second electronic device</param> 
-        /// <returns>rue if battery life of first is less than battery life of second</returns> 
+        /// <param name="first">First post card</param> 
+        /// <param name="second">Second post card</param> 
+        /// <returns>True if year of first is greater than year of second</returns>  
         public static bool operator <(PostCard first, PostCard second)
         {
             return first.year < second.year;

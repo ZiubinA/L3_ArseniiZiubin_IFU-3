@@ -83,10 +83,10 @@ namespace L3_ArseniiZiubin_IFU_3
         }
 
         /// <summary> 
-        /// Read data of electronic devices for insertion 
+        /// Read data of post cards for insertion 
         /// </summary> 
         /// <param name="Path">Path to selected data file</param> 
-        /// <returns>Linked list of electronic devices</returns> 
+        /// <returns>Linked list of post cards</returns> 
         public static MyLinkedList ReadForInsertion(string Path)
         {
             MyLinkedList Insertion = new MyLinkedList();
@@ -102,7 +102,6 @@ namespace L3_ArseniiZiubin_IFU_3
                     PostCard PC = new PostCard(model, type, batteryLife);
                     // Avoid  duplicates 
                     if (!Insertion.Contains(PC))
-                        // ElectronicDevices.AddToFront(ED);  
                         Insertion.AddToEnd(PC);
                 }
             }

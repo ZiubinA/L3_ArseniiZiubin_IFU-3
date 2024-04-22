@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace L3_ArseniiZiubin_IFU_3
@@ -52,18 +48,18 @@ namespace L3_ArseniiZiubin_IFU_3
                 ResultBox.Items.Add(new string('-', 12));
                 // Extract values (electronic devices) 
                 MyLinkedList ED = pair.Value;
-                ResultBox.Items.Add(new string('-', 65));
+                ResultBox.Items.Add(new string('-', 119));
                 string tableHeader = string.Format
-                ("|{0, -20} | {1, -20} | {2, 15} | {3, -20} | {4, 15} | {5, 15} | {6, -20} |",
+                ("|{0, 10} | {1, 10} | {2, 10} | {3, 10} | {4, 10} | {5, 10} | {6, 10} |",
                 "Name", "Country", "Year", "Type", "Height", "Width", "Quantity");
                 ResultBox.Items.Add(tableHeader);
-                ResultBox.Items.Add(new string('-', 65));
+                ResultBox.Items.Add(new string('-', 119));
                 for (ED.Start(); ED.Exists(); ED.Next())
                 {
                     PostCard ed = ED.GetData();
                     ResultBox.Items.Add(ed.ToString());
                 }
-                ResultBox.Items.Add(new string('-', 65));
+                ResultBox.Items.Add(new string('-', 119));
                 string numElements = string.Format("Number of post cards: {0}",
                                                     ED.Count);
                 ResultBox.Items.Add(numElements);
@@ -72,9 +68,9 @@ namespace L3_ArseniiZiubin_IFU_3
         }
 
         /// <summary>
-        /// Writes contents (company name and average working time for employees) to ListBox
+        /// Writes container name to ListBox
         /// </summary>
-        /// <param name="averages">Average working time for employees of each company</param>
+        /// <param name="data">initial data</param>
         public void DisplayContainer(Dictionary<string, string> data)
         {
             foreach (var kvp in data)
@@ -88,22 +84,43 @@ namespace L3_ArseniiZiubin_IFU_3
         /// Writes contents about post cards to ListBox
         /// </summary>
         /// <param name="header">Note (label) above table</param>
-        /// <param name="E">Linked list of employees</param>
+        /// <param name="E">Linked list of post cards</param>
         public void Display(string header, MyLinkedList E)
         {
             ResultBox.Items.Add(header);
+            ResultBox.Items.Add(new string('-', 119));
             string tableHeader = string.Format
-                   ("|{0, -20} | {1, -20} | {2, 15} | {3, -20} | {4, 15} | {5, 15} | {6, -20} |",
+                   ("|{0, 10} | {1, 10} | {2, 10} | {3, 10} | {4, 10} | {5, 10} | {6, 10} |",
                    "Name", "Country", "Year", "Type", "Height", "Width", "Quantity");
             ResultBox.Items.Add(tableHeader);
-            ResultBox.Items.Add(new string('-', 75));
+            ResultBox.Items.Add(new string('-', 119));
             for (E.Start(); E.Exists(); E.Next())
             {
                 PostCard em = E.GetData();
                 ResultBox.Items.Add(em.ToString());
             }
-            ResultBox.Items.Add(new string('-', 75));
+            ResultBox.Items.Add(new string('-', 119));
             ResultBox.Items.Add("\n");
+        }
+
+        // / Writes contents of strings (types of post cards) to ListBox
+        public void Display(MyLinkedListOfStrings S)
+        {
+            if (S.Count > 0)
+            {
+                string mLine = "Filter(-s): ";
+                for (S.Start(); S.Exists(); S.Next())
+                {
+                    string s = S.GetData();
+                    mLine += s + ",";
+                }
+                mLine += "\n";
+                ResultBox.Items.Add(mLine);
+            }
+            else
+            {
+                ResultBox.Items.Add("No filters were selected");
+            }
         }
     }
 }

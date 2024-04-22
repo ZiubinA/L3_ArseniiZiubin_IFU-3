@@ -1,6 +1,6 @@
 ﻿Collector2
-AName1; Country1; 2022; colored; 30; 15; 5
-TName2; SCountry4; 2015; black; 22; 11; 1
-BName3; SCountry3; 2024; colored; 32; 32; 2
+AName1; Country1; 0; colored; 30; 15; 5
+TName2; SCountry4; 0; black; 22; 11; 1
+BName3; SCountry3; 0; colored; 32; 32; 2
 SName4; NO; 0; black; 34; 14; 5
 RName5; SCountry2; 0; white; 67; 50; 3

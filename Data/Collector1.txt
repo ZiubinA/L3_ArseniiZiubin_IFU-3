@@ -1,6 +1,6 @@
 ﻿Collector1
-AName; Country1; 2020; colored; 40; 20; 5
-BName; Country2; 2019; black; 22; 11; 4
-CName; Country3; 2014; white; 32; 32; 2
+AName; Country1; 0; colored; 40; 20; 5
+BName; Country2; 0; black; 22; 11; 4
+CName; Country3; 0; white; 32; 32; 2
 DName; NO; 0; black; 23; 14; 5
 EName; Country4; 0; white; 50; 50; 7
